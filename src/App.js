@@ -12,6 +12,7 @@ import { useLoader } from "@react-three/fiber";
 import { Suspense } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "@react-three/drei";
+import glass from "./anaconda_black.glb";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,7 +21,7 @@ const darkTheme = createTheme({
 });
 
 function Model(props) {
-  const gltf = useLoader(GLTFLoader, "/anaconda_black.glb");
+  const gltf = useLoader(GLTFLoader, glass);
   console.log(gltf);
   const ref = useRef();
   useFrame((state, delta) => {
