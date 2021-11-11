@@ -20,7 +20,7 @@ const darkTheme = createTheme({
 });
 
 function Model(props) {
-  const gltf = useLoader(GLTFLoader, "anaconda_black.glb");
+  const gltf = useLoader(GLTFLoader, "./anaconda_black.glb");
   const ref = useRef();
   useFrame((state, delta) => {
     ref.current.position.x = (landmark_x - 0.5)*10;
