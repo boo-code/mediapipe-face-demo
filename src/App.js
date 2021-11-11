@@ -20,9 +20,11 @@ const darkTheme = createTheme({
 });
 
 function Model(props) {
-  const gltf = useLoader(GLTFLoader, "https://lifelike-staging.s3.amazonaws.com/QReal+QA+-+Nov+10/Item+1/modelviewer/1921-21832.glb");
+  const gltf = useLoader(GLTFLoader, "./anaconda_black.glb");
+  const gltf1 = useLoader(GLTFLoader, "https://3dfoodmodel-modelviewer.s3.amazonaws.com/assets/Bolle/Nevada_Blue/BolleNevada_Blue_v1.glb");
   console.log(gltf);
   const ref = useRef();
+  const ref1 = useRef();
   useFrame((state, delta) => {
     ref.current.position.x = (landmark_x - 0.5)*10;
     ref.current.position.y = -(landmark_y - 0.5)*7.5;
@@ -33,7 +35,8 @@ function Model(props) {
   });
   return (
     <>
-      <primitive {...props} ref={ref} object={gltf.scene} scale={0.1}></primitive>
+      <primitive {...props} ref={ref} object={gltf.scene} scale={18}></primitive>
+      <primitive {...props} ref={ref1} object={gltf1.scene} scale={18}></primitive>
     </>
   );
 }
