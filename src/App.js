@@ -12,7 +12,6 @@ import { useLoader } from "@react-three/fiber";
 import { Suspense } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "@react-three/drei";
-import glass from "./anaconda_black.glb";
 
 const darkTheme = createTheme({
   palette: {
@@ -21,7 +20,7 @@ const darkTheme = createTheme({
 });
 
 function Model(props) {
-  const gltf = useLoader(GLTFLoader, glass);
+  const gltf = useLoader(GLTFLoader, "https://lifelike-staging.s3.amazonaws.com/QReal+QA+-+Nov+10/Item+1/modelviewer/1921-21832.glb");
   console.log(gltf);
   const ref = useRef();
   useFrame((state, delta) => {
@@ -34,7 +33,7 @@ function Model(props) {
   });
   return (
     <>
-      <primitive {...props} ref={ref} object={gltf.scene} scale={18}></primitive>
+      <primitive {...props} ref={ref} object={gltf.scene} scale={0.1}></primitive>
     </>
   );
 }
