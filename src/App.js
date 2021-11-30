@@ -19,10 +19,29 @@ const darkTheme = createTheme({
   },
 });
 
+const Lights = () => {
+  return (
+      <>
+          <ambientLight intensity={0.4} />
+          <directionalLight 
+              castShadow 
+              position={-8, 16, -8}
+              intensity={0}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+              shadow-camera-far={50}
+              shadow-camera-left={-10}
+              shadow-camera-right={10}
+              shadow-camera-top={10}
+              shadow-camera-bottom={-10} />
+          <pointLight position={[0,50,0]} intensity={2} />
+      </>
+  )
+}
+
 function Model(props) {
-  const gltf = useLoader(GLTFLoader, "./anaconda_black.glb");
-  const gltf1 = useLoader(GLTFLoader, "https://3dfoodmodel-modelviewer.s3.amazonaws.com/assets/Bolle/Nevada_Blue/BolleNevada_Blue_v1.glb");
-  console.log(gltf);
+  const gltf = useLoader(GLTFLoader, "./translated-bolle.glb");
+  //console.log(gltf);
   const ref = useRef();
   const ref1 = useRef();
   useFrame((state, delta) => {
@@ -31,12 +50,13 @@ function Model(props) {
     ref.current.position.z = -(landmark_z);
     ref.current.scale.x = scale_x*100;
     ref.current.scale.y = scale_x*100;
+    ref.current.scale.z = scale_x*100;
+    //ref.current.rotation.y += 0.001;
     //console.log(ref.current);
   });
   return (
     <>
       <primitive {...props} ref={ref} object={gltf.scene} scale={18}></primitive>
-      <primitive {...props} ref={ref1} object={gltf1.scene} scale={18}></primitive>
     </>
   );
 }
@@ -60,9 +80,9 @@ function App() {
     if(results.multiFaceLandmarks){
       for (const landmarks of results.multiFaceLandmarks) {
         if(landmarks[0].x !== undefined){
-          landmark_x = (landmarks[446].x + landmarks[226].x)/2;
-          landmark_y = (landmarks[101].y + landmarks[330].y)/2;
-          landmark_z = landmarks[5].z;
+          landmark_x = landmarks[168].x;
+          landmark_y = landmarks[168].y;
+          landmark_z = landmarks[168].z;
           scale_x = landmarks[265].x - landmarks[35].x;
           scale_y = landmarks[446].y - landmarks[226].y;
         }
@@ -146,6 +166,7 @@ function App() {
                     <canvas hidden className="responsive-canvas" ref={canvasRef} style={{zIndex:9}}>
                     </canvas>
                     <Canvas className="canvas-wrapper">
+                    <Lights/>
                       <Suspense fallback={null}>
                         <Model position={[0,0,-3]}/>
                         <OrbitControls />
