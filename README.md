@@ -16,7 +16,7 @@ Check [Performance Characteristics](https://blog.tensorflow.org/2020/03/face-and
 
 ## Work in Progress (WIP)
 
-- The 3D model currently currently tracks Ring Finger, but 3D object rotations and scaling are WIP.
+- The 3D model currently currently tracks the landmark location between the eyes, but 3D object rotations and scaling are WIP.
 - GLTFLoader has a problem loading 3D objects from the public folder. We believe it is related to headers. It is currently WIP.
 
 ## Available Scripts
