@@ -7,7 +7,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 
+[Sunglasses Try-on Demo](https://master.d3ff7g3p8c7frc.amplifyapp.com/)
+
 Try on Desktop and Mobile browsers to check the performance differences.
+
+## Under the Hood
+
+This demo app currently captures a video stream via [react-webcam](https://github.com/mozmorris/react-webcam), feeds the stream into [MediaPipe FaceMesh](https://google.github.io/mediapipe/solutions/face_mesh.html) which tracks 468 3D face landmarks in real-time, which then provides real-time locations to [ThreeJS - react-three/fiber](https://github.com/pmndrs/react-three-fiber) render the 3D object accordingly.
+
+![468 face landmark](https://developers.google.com/ar/images/augmented-faces/augmented-faces-468-point-face-mesh.png)
 
 ## Limitations
 
