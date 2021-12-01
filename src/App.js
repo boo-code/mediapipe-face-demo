@@ -40,7 +40,7 @@ const Lights = () => {
 }
 
 function Model(props) {
-  const gltf = useLoader(GLTFLoader, "./translated-bolle.glb");
+  const gltf = useLoader(GLTFLoader, "https://3dfoodmodel-modelviewer.s3.amazonaws.com/assets/Bolle/Nevada_Blue/BolleNevada_Blue_v1.glb");
   //console.log(gltf);
   const ref = useRef();
   const ref1 = useRef();
